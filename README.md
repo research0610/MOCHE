@@ -1,5 +1,5 @@
 # MOCHI
-Comprehensible Counterfactual Interpretation onKolmogorov-Smirnov Test
+Comprehensible Counterfactual Interpretation on Kolmogorov-Smirnov Test
 
 ## Setup Experiment Environment
 
@@ -40,7 +40,7 @@ sh bin/run_exp_spectral.sh
 
 ## Dataset
 
-We use the dataset in NAB repository.
+We use the dataset in the NAB repository.
 
 
 ## Links
