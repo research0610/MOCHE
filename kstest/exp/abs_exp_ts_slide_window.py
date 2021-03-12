@@ -1,14 +1,11 @@
 import random
-
 import tqdm
-
 from kstest.baselines import SpectralResidual, Luminol
 from kstest.shift_detector import ShiftDetectorMSP
 from kstest.utils import set_random_seed
 from kstest.log import getLogger
 import numpy as np
-from kstest.baselines import Time
-from kstest.dataset.ts_data import load_ts_dataset, TSData, ReadNABDatasetWithTime
+from kstest.dataset.ts_data import TSData, ReadNABDatasetWithTime
 
 set_random_seed()
 
@@ -114,15 +111,11 @@ class AbsExpTS:
                     if self.check_drift(test_set, reference_set):
                         generated_data.append((test_set, reference_set, test_label.tolist(), file,
                                                reference_time, test_time))
-                        # generated_data.append((test_set, reference_set, test_label.tolist(), file))
             if len(generated_data) > 0:
                 ks_test_data = [random.choice(generated_data) for _ in range(self.sample_size)]
                 for i in ks_test_data:
                     logger.info(f"Processing files {file_counter}/{total_files}")
                     yield i
-                # for i in range(self.sample_size):
-                #     logger.info(f"Processing files {file_counter}/{total_files}")
-                #     yield random.choice(generated_data)
 
 
     def check_drift(self, X_te_red, X_tr_red):

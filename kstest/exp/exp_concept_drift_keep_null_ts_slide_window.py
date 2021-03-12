@@ -30,7 +30,8 @@ class Experiment(AbsExpTS):
         total_shift = defaultdict(list)
         with open(self.data_segments, "w") as w, open(self.output_file, "w") as w_1:
             for window in self.window_size:
-                for X_te_red, X_tr_red, labels, file in self.find_failed_ks_tests(window):
+                # for X_te_red, X_tr_red, labels, file in self.find_failed_ks_tests(window):
+                for X_te_red, X_tr_red, labels, file, reference_time, test_time in self.find_failed_ks_tests(window):
                     X_tr_odim = (np.amax(X_tr_red, axis=1)).tolist()
                     X_te_odim = (np.amax(X_te_red, axis=1)).tolist()
                     if_shift = self.shift_detector.detect_by_msp(X_tr_odim, X_te_odim)
@@ -45,7 +46,7 @@ class Experiment(AbsExpTS):
                                                               ground_truth)
                     mochi_size = 0
                     for method, rst in interpretations.items():
-                        if "MOCHI" in method and "MOCHI_NL" not in method and "MOCHI_NP" not in method:
+                        if "MOCHI" in method and "MOCHI_NL" not in method:
                             mochi_size = len(rst["Interpretation"])
                             logger.info(f"Mochi size is {mochi_size}")
                     logger.info("")  # Create a new line
@@ -56,7 +57,7 @@ class Experiment(AbsExpTS):
                         if "MOCHI_NL" in method:
                             continue
                         if int(info["IFShift"]) == 0:
-                            total_size[method].append(len(rst["Interpretation"]))
+                            total_size[method].append(len(info["Interpretation"]))
                         total_f1[method].append(info["KDDF1"])
                         total_true_f1[method].append(info["F1"])
                         total_shift[method].append(1 if info["IFShift"] else 0)
@@ -68,7 +69,10 @@ class Experiment(AbsExpTS):
                     w.write(json.dumps({
                         "REFERENCE": X_tr_odim,
                         "TEST": X_te_odim,
-                        "LABELS": labels
+                        "LABELS": labels,
+                        "FILE": file,
+                        "REFERENCE_TS": reference_time,
+                        "TEST_TS": test_time
                     }) + "\n")
                     w_1.write(json.dumps(interpretations) + "\n")
                     logger.info(self.output_file)
