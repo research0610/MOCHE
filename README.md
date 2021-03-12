@@ -58,7 +58,7 @@ Spectral Residual: https://docs.seldon.io/projects/alibi-detect/en/latest/api/mo
 
 NAB Dataset: https://github.com/numenta/NAB/tree/master/data
 
-COVID-19 Dataset: 
+COVID-19 Dataset: http://www.bccdc.ca/health-info/diseases-conditions/covid-19/data
 
 ## Reference
 
