@@ -1,0 +1,13 @@
+# ===============================================================
+# Important Note
+# ===============================================================
+# Due to the non-disclosure agreement between us and the authors, we cannot publish the code of Series2Graph.
+# Please contact the authors of Series2Graph, Paul Boniol, Themis Palpanas, for their source code.
+#
+# Reference using:
+#
+# P. Boniol and T. Palpanas, Series2Graph: Graph-based Subsequence Anomaly Detection in Time Series, PVLDB (2020)
+#
+# P. Boniol and T. Palpanas and M. Meftah and E. Remy, GraphAn: Graph-based Subsequence Anomaly Detection, demo PVLDB (2020)
+#
+# ===============================================================
