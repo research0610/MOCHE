@@ -1,11 +1,11 @@
-# MOCHI
+# MOCHE
 Comprehensible Counterfactual Interpretation on Kolmogorov-Smirnov Test
 
 ## Setup Experiment Environment
 
 Use the following command to setup the experiment environment.
 
-The command will install the dependencies required by MOCHI.
+The command will install the dependencies required by MOCHE.
 
 ```
 python setup.py install
